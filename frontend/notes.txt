@@ -1,0 +1,7 @@
+npm create vite@latest    // vite for efficent tool create react js
+
+npm install react-slideshow-image
+
+npm i axios
+
+npm i react-router-dom

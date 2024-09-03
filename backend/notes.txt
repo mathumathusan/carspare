@@ -1,0 +1,18 @@
+npm init =>to create the package.json file using npm, use the following code.
+
+npm install nodemon => automatic save server
+
+after install the nodemon, in package.json  put it "start": "nodemon index.js", and terminal npm start
+
+npm install express => to install express for efficent backend framework of nodejs
+
+cors: This package enables Cross-Origin Resource Sharing, which allows a server to specify who can access its resources.
+
+dotenv: This package loads environment variables from a file named ".env" into the Node.js process, making it easy to manage configurations.
+
+express: This package is a popular web framework for Node.js, simplifying the process of building web applications and APIs.
+
+mysql2: This package provides a fast and efficient way to interact with MySQL databases in Node.js.
+
+nodemon: This package is a development tool that monitors your Node.js application for changes and automatically restarts the server when code changes are detected. It's very useful during the development process as you don't have to manually restart the server after each code modification.
+
