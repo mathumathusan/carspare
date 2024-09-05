@@ -5,3 +5,7 @@ npm install react-slideshow-image
 npm i axios
 
 npm i react-router-dom
+
+
+npm install sweetalert2  for beautiful alert box
+
