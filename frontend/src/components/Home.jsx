@@ -3,7 +3,7 @@ import "./Home.css";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import axios from "axios";
-import Swal from "sweetalert2"; // Import SweetAlert2
+import Swal from "sweetalert2"; 
 
 function Home() {
   const [carParts, setCarParts] = useState([]);
@@ -47,6 +47,7 @@ function Home() {
           '<input id="swal-input1" class="swal2-input" placeholder="Enter your name">' +
           '<input id="swal-input2" class="swal2-input" placeholder="Enter your address">',
         focusConfirm: false,
+        showCloseButton: true, 
         preConfirm: () => {
           const customer_name = document.getElementById('swal-input1').value;
           const customer_address = document.getElementById('swal-input2').value;
@@ -85,15 +86,22 @@ function Home() {
         Swal.fire(
           "Success!",
           `Order placed successfully! Total amount: $${totalOrderPrice.toFixed(2)}`,
-          "success"
+          "success",
+          {
+            showCloseButton: true, // Enable close button in success alert
+          }
         );
         setCart([]); // Clear the cart after placing order
       }
     } catch (error) {
       console.error("Error placing order:", error);
-      Swal.fire("Error", "There was an error placing your order.", "error");
+      Swal.fire("Error", "There was an error placing your order.", "error", {
+        showCloseButton: true, // Enable close button in error alert
+      });
     }
   };
+  
+  
   
 
   return (
