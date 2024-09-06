@@ -26,9 +26,16 @@ body {
   .navbar-links {
     list-style: none;
     display: flex;
+    color: white;
+    align-items: center;
     margin: 0;
     padding: 0;
     transition: max-height 0.3s ease-in-out;
+  }
+
+  .cartIcon{
+    cursor: pointer;
+    margin-top: 8px;
   }
   
   .navbar-links li {
@@ -42,7 +49,7 @@ body {
     transition: color 0.3s;
   }
   
-  .navbar-links a:hover {
+  .navbar-links :hover {
     color: #ff6347;
   }
   

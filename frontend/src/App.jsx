@@ -6,24 +6,25 @@ import SlideShow from "./components/SlideShow";
 import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Manage from "./components/Manage";
+import Cart from "./components/Cart";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // Lift the cart state to the App component
+  const [cart, setCart] = useState([]);
 
   return (
-
-      <BrowserRouter>
+    <BrowserRouter>
+      <NavBar showCartIcon={true} />
       
       <Routes>
-        <Route path="/" element={<SlideShow/>}/>
-        <Route path="/home" element={<SlideShow/>}/>
-        <Route path="/services" element={<Home/>}/>
-         <Route path="/manage" element={<Manage/>}/>
+        <Route path="/home" element={<SlideShow />} />
+        <Route path="/services" element={<Home cart={cart} setCart={setCart} />} />
+        <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
+        <Route path="/manage" element={<Manage />} />
       </Routes>
-    
+
+      <Footer />
     </BrowserRouter>
-   
-  
   );
 }
 

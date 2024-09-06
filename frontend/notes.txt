@@ -9,3 +9,5 @@ npm i react-router-dom
 
 npm install sweetalert2  for beautiful alert box
 
+npm install @mui/icons-material @mui/material @emotion/styled @emotion/react
+

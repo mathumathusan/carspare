@@ -1,0 +1,64 @@
+/* Cart container styling */
+.cart-container {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cart-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* Cart item list */
+  .cart-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .cart-container li {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cart item details */
+  .cart-container li span {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  /* Place Order button styling */
+  .place-order-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  .place-order-btn:hover {
+    background-color: #0056b3;
+  }
+  
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .car-part-card {
+        max-width: 100%;
+      }
+    }

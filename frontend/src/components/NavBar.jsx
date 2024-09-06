@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
-import './NavBar.css';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./NavBar.css";
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { Link } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ showCartIcon }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,12 +13,27 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">CarSpare</div>
-      <ul className={`navbar-links ${isOpen ? 'open' : ''}`}>
-        <li><Link to={'/home'}>Home</Link></li>
-        <li><a href="#about">About</a></li>
-        <li><Link to={'/manage'}>Manage</Link></li>
-        <li><Link to={'/services'}>Services</Link></li>
-        <li><a href="#contact">Contact</a></li>
+      <ul className={`navbar-links ${isOpen ? "open" : ""}`}>
+      {showCartIcon && (
+          <li>
+           <Link to={"/cart"}><ShoppingCartOutlinedIcon className="cartIcon" /></Link> 
+          </li>
+        )}
+        <li>
+          <Link to={"/home"}>Home</Link>
+        </li>
+        <li>
+          <a href="#about">About</a>
+        </li>
+        <li>
+          <Link to={"/manage"}>Manage</Link>
+        </li>
+        <li>
+          <Link to={"/services"}>Services</Link>
+        </li>
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
       </ul>
       <div className="hamburger-menu" onClick={toggleMenu}>
         <span></span>
