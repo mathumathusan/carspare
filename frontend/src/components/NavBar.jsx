@@ -3,9 +3,9 @@ import "./NavBar.css";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
 
-function NavBar({ showCartIcon }) {
+function NavBar({ showCartIcon, cart }) {
   const [isOpen, setIsOpen] = useState(false);
-
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -14,9 +14,17 @@ function NavBar({ showCartIcon }) {
     <nav className="navbar">
       <div className="navbar-brand">CarSpare</div>
       <ul className={`navbar-links ${isOpen ? "open" : ""}`}>
-      {showCartIcon && (
+        {showCartIcon && (
           <li>
-           <Link to={"/cart"}><ShoppingCartOutlinedIcon className="cartIcon" /></Link> 
+            <Link to={"/cart"}>
+              {" "}
+              <div className="cart-icon-wrapper">
+                <ShoppingCartOutlinedIcon className="cartIcon" />
+                {totalQuantity > 0 && (
+                  <span className="cart-badge">{totalQuantity}</span>
+                )}
+              </div>
+            </Link>
           </li>
         )}
         <li>

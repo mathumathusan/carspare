@@ -14,7 +14,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar showCartIcon={true} />
+      <NavBar showCartIcon={true} cart={cart} />
       
       <Routes>
         <Route path="/home" element={<SlideShow />} />

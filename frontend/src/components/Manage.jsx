@@ -38,7 +38,7 @@ function Manage() {
 
   return (
     <>
-      <NavBar />
+     
       <form className="car-part-form" onSubmit={handleSubmit}>
         <input
           type="text"

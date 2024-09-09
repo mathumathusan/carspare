@@ -49,11 +49,11 @@ function Home({ cart, setCart }) {
             <p className="car-part-year">Year: {part.year}</p>
             <p className="car-part-price">Price: ${part.price}</p>
 
-            {cartItem ? (
+            {/* {cartItem ? (
               <p>Quantity: {cartItem.quantity}</p>
             ) : (
               <p>Quantity: 0</p>
-            )}
+            )} */}
 
             <button
               className="add-to-cart-btn"
