@@ -52,7 +52,7 @@ function Home({ cart, setCart }) {
             {/* {cartItem ? (
               <p>Quantity: {cartItem.quantity}</p>
             ) : (
-              <p>Quantity: 0</p>
+              <p>Quantity: 0</p> yttyuiop[]op[]\6-098Q23
             )} */}
 
             <button
