@@ -29,7 +29,7 @@ function NavBar({ showCartIcon, cart }) {
       <div className="navbar-brand">CarSpare</div>
       <ul className={`navbar-links ${isOpen ? "open" : ""}`}>
         <li>
-          <Link to={"/home"}>Home</Link>
+          <Link to={"/"}>Home</Link>
         </li>
         <li>
           <a href="#about">About</a>

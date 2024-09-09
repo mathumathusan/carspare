@@ -62,7 +62,7 @@ function Login() {
       const result = await response.json();
       if (response.ok) {
         showSuccessAlert("Login successful!");
-        usenavigate("/home");
+        usenavigate("/");
       } else {
         showErrorAlert(result.message || "Login failed");
       }
