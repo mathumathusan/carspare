@@ -115,7 +115,6 @@ function Login() {
             <label htmlFor="chk" aria-hidden="true">Sign up</label>
             <input type="text" name="txt" placeholder="User name" required />
             <input type="email" name="email" placeholder="Email" required />
-            <input type="number" name="broj" placeholder="BrojTelefona" required />
             <input type="password" name="pswd" placeholder="Password" required />
             <button type="submit">Sign up</button>
           </form>
