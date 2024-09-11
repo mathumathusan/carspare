@@ -9,6 +9,7 @@ import Manage from "./components/Manage";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
 
 function App() {
   // Lift the cart state to the App component
@@ -26,6 +27,7 @@ function AppContent({ cart, setCart }) {
   const location = useLocation();
   const isLogin = location.pathname === "/login";
   const isRegister = location.pathname === "/register";
+  const isDashboard = location.pathname === "/dashboard";
 
   return (
     <>
@@ -37,11 +39,12 @@ function AppContent({ cart, setCart }) {
         <Route path="/services" element={<Home cart={cart} setCart={setCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         <Route path="/manage" element={<Manage />} />
+        <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
 
-      {!isLogin && !isRegister && <Footer />}
+      {!isLogin && !isRegister && !isDashboard&&<Footer />}
     </>
   );
 }
