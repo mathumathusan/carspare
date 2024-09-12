@@ -32,7 +32,7 @@ function AppContent({ cart, setCart }) {
   return (
     <>
       {/* Conditionally render NavBar and Footer */}
-      {!isLogin && !isRegister && <NavBar showCartIcon={true} cart={cart} />}
+      {!isLogin && !isRegister && <NavBar showCartIcon={true} cart={cart} pathname={location.pathname}  />}
       
       <Routes>
         <Route path="/" element={<SlideShow />} />
