@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2"; // Import SweetAlert
 
 function Dashboard() {
   const [carParts, setCarParts] = useState([]);
+  const navigate = useNavigate();
 
   // Fetch car parts data from the backend
   useEffect(() => {
@@ -19,19 +21,45 @@ function Dashboard() {
   }, []);
 
   // Handle edit button click
-  const handleEdit = (id) => {
-    console.log(`Edit car part with ID: ${id}`);
-    // Navigate to edit page or open modal with form
+  const handleEdit = (part) => {
+    // Show SweetAlert confirmation before navigating to edit
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to edit this car part?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, edit it!",
+      cancelButtonText: "No, cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/manage", { state: { carPart: part } });
+      }
+    });
   };
 
-  
   const handleDelete = (id) => {
-    console.log(`Delete car part with ID: ${id}`);
-
-    axios
-      .delete(`http://localhost:3000/api/carpart/1`)
-      .then((res) => {console.log(res);})
-      .catch((err) => console.error(err));
+    // Show SweetAlert confirmation before deleting
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/api/carpart/${id}`)
+          .then((res) => {
+            Swal.fire("Deleted!", "The car part has been deleted.", "success");
+            window.location.reload(); // Refresh the page after deletion
+          })
+          .catch((err) => {
+            console.error(err);
+            Swal.fire("Error!", "There was an error deleting the car part.", "error");
+          });
+      }
+    });
   };
 
   return (
@@ -61,37 +89,18 @@ function Dashboard() {
           <h1>Welcome to Your Dashboard</h1>
         </header>
         <div className="content">
-          <Link to={"/manage"} className="card_link">
-            <section className="card">
-              <h3>Manage Products</h3>
-              <p>Admin can able to add the products</p>
-            </section>
-          </Link>
-          <Link to={"/services"} className="card_link">
-            <section className="card">
-              <h3>Car Products</h3>
-              <p>Admin can able to see parts</p>
-            </section>
-          </Link>
-          <Link to={"/services"} className="card_link">
-            <section className="card">
-              <h3>Car Products</h3>
-              <p>Admin can able to see parts</p>
-            </section>
-          </Link>
-          <Link to={"/services"} className="card_link">
-            <section className="card">
-              <h3>Car Products</h3>
-              <p>Admin can able to see parts</p>
-            </section>
-          </Link>
           <table className="car-parts-table">
             <thead>
               <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -99,11 +108,18 @@ function Dashboard() {
                 <tr key={part.id}>
                   <td>{part.id}</td>
                   <td>{part.name}</td>
-                  <td>{part.description}</td>
+                  <td>{part.brand}</td>
+                  <td>{part.model}</td>
+                  <td>{part.year}</td>
+                  <td>{part.price}</td>
+                  <td>{part.stock}</td>
+                  <td>
+                    <img src={part.image_url} alt="" />
+                  </td>
                   <td>
                     <button
                       className="edit-btn"
-                      onClick={() => handleEdit(part.id)}
+                      onClick={() => handleEdit(part)}
                     >
                       Edit
                     </button>
