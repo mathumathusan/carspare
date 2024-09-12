@@ -61,8 +61,16 @@ function Login() {
 
       const result = await response.json();
       if (response.ok) {
+        console.log(result.user.role)
         showSuccessAlert("Login successful!");
+        if(result.user.role=='admin'){
+          usenavigate("/dashboard");
+        }
+       else{
         usenavigate("/");
+       }
+        
+        
       } else {
         showErrorAlert(result.message || "Login failed");
       }
@@ -229,6 +237,14 @@ function Login() {
               name="password"
               placeholder="Password"
               value={registerData.password}
+              onChange={handleRegisterChange}
+              required
+            />
+              <input
+              type="text"
+              name="role"
+              placeholder="admin"
+              value={registerData.role}
               onChange={handleRegisterChange}
               required
             />
